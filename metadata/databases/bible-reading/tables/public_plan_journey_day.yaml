@@ -1,0 +1,10 @@
+table:
+  name: plan_journey_day
+  schema: public
+object_relationships:
+- name: plan_day
+  using:
+    foreign_key_constraint_on: plan_day_id
+- name: plan_journey
+  using:
+    foreign_key_constraint_on: plan_journey_id

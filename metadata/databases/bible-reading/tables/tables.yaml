@@ -1,0 +1,5 @@
+- "!include public_plan.yaml"
+- "!include public_plan_day.yaml"
+- "!include public_plan_day_passage.yaml"
+- "!include public_plan_journey.yaml"
+- "!include public_plan_journey_day.yaml"

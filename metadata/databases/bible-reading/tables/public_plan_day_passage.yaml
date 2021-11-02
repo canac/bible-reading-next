@@ -1,0 +1,3 @@
+table:
+  name: plan_day_passage
+  schema: public
