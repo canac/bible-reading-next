@@ -8,9 +8,8 @@ import {
   ListItem,
   ListItemText,
   Typography,
-} from '@material-ui/core';
-import { green } from '@material-ui/core/colors';
-import { makeStyles } from '@material-ui/core/styles';
+} from '@mui/material';
+import { green } from '@mui/material/colors';
 import { format } from 'date-fns';
 import React from 'react';
 import {
@@ -33,25 +32,20 @@ type JourneyDayProps = {
   };
 };
 
-const useStyles = makeStyles({
-  complete: {
-    backgroundColor: green[100],
-  },
-  incomplete: {},
-});
-
 export default function JourneyDay(props: JourneyDayProps): JSX.Element | null {
-  const classes = useStyles();
-
   const [, completeDay] = useCompleteDayMutation();
   const [, uncompleteDay] = useUncompleteDayMutation();
 
   return (
     <Card
-      className={[
-        styles['journey-day'],
-        props.day.completed ? classes.complete : classes.incomplete,
-      ].join(' ')}
+      className={styles['journey-day']}
+      sx={
+        props.day.completed
+          ? {
+              backgroundColor: green[100],
+            }
+          : {}
+      }
     >
       <CardContent>
         <Typography
