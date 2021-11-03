@@ -1,0 +1,10 @@
+mutation UncompleteDay($plan_journey_day_id: Int!) {
+  plan_journey_day: update_plan_journey_day_by_pk(
+    pk_columns: { plan_journey_day_id: $plan_journey_day_id }
+    _set: { completed: false, completed_date: null }
+  ) {
+    plan_journey_day_id
+    completed
+    completed_date
+  }
+}

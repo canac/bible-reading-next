@@ -1,0 +1,13 @@
+mutation CompleteDay(
+  $plan_journey_day_id: Int!
+  $completed_date: timestamptz!
+) {
+  plan_journey_day: update_plan_journey_day_by_pk(
+    pk_columns: { plan_journey_day_id: $plan_journey_day_id }
+    _set: { completed: true, completed_date: $completed_date }
+  ) {
+    plan_journey_day_id
+    completed
+    completed_date
+  }
+}

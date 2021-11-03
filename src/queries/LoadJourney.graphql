@@ -1,0 +1,20 @@
+query LoadJourney($plan_journey_id: Int!) {
+  plan_journey: plan_journey_by_pk(plan_journey_id: $plan_journey_id) {
+    plan_id
+    plan {
+      name
+    }
+    plan_journey_days(order_by: [{ plan_day: { day: asc } }]) {
+      plan_journey_day_id
+      plan_day {
+        plan_day_id
+        day
+        plan_day_passages {
+          passage
+        }
+      }
+      completed
+      completed_date
+    }
+  }
+}
