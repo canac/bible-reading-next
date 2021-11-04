@@ -71,7 +71,7 @@ export default function JourneyDay(props: JourneyDayProps): JSX.Element | null {
           Completed on{' '}
           <strong>
             {props.day.completed_date &&
-              format(new Date(props.day.completed_date), 'MMM M, yyyy')}
+              format(new Date(props.day.completed_date), 'MMM d, yyyy')}
           </strong>
         </Typography>
       </CardContent>
