@@ -2,9 +2,13 @@ import React from 'react';
 import JourneyDay from './JourneyDay';
 import { useLoadJourneyQuery } from '../generated/graphql';
 
-export default function Journey(): JSX.Element | null {
+type Props = {
+  id: number;
+};
+
+export default function Journey(props: Props): JSX.Element | null {
   const [journeyResult] = useLoadJourneyQuery({
-    variables: { plan_journey_id: 1 },
+    variables: { plan_journey_id: props.id },
   });
 
   const days = journeyResult?.data?.plan_journey?.plan_journey_days;
