@@ -11,7 +11,6 @@ import {
 } from '@mui/material';
 import { green } from '@mui/material/colors';
 import { format } from 'date-fns';
-import React from 'react';
 import {
   useCompleteDayMutation,
   useUncompleteDayMutation,

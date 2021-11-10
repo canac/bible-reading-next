@@ -1,4 +1,3 @@
-import React from 'react';
 import JourneyDay from './JourneyDay';
 import { useLoadJourneyQuery } from '../generated/graphql';
 

@@ -1,6 +1,5 @@
 import type { NextPage } from 'next';
 import { useRouter } from 'next/router';
-import React from 'react';
 import Journey from '../../components/Journey';
 import styles from '../../styles/Index.module.css';
 

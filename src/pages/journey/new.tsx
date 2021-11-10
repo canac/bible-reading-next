@@ -1,5 +1,4 @@
 import type { NextPage } from 'next';
-import React from 'react';
 import { useLoadPlansQuery } from '../../generated/graphql';
 import Plan from '../../components/Plan';
 import { Grid } from '@mui/material';

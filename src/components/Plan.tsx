@@ -5,7 +5,6 @@ import {
   CardContent,
   Typography,
 } from '@mui/material';
-import React from 'react';
 import { useRouter } from 'next/router';
 import { useBeginJourneyMutation } from '../generated/graphql';
 import styles from '../styles/Plan.module.css';
