@@ -1,0 +1,16 @@
+query LoadPlans {
+  plan {
+    plan_id
+    name
+    plan_days_aggregate {
+      aggregate {
+        count
+      }
+    }
+    plan_journeys_aggregate {
+      aggregate {
+        count
+      }
+    }
+  }
+}

@@ -374,6 +374,10 @@ export type Plan = {
   /** An aggregate relationship */
   plan_days_aggregate: Plan_Day_Aggregate;
   plan_id: Scalars['Int'];
+  /** An array relationship */
+  plan_journeys: Array<Plan_Journey>;
+  /** An aggregate relationship */
+  plan_journeys_aggregate: Plan_Journey_Aggregate;
 };
 
 
@@ -394,6 +398,26 @@ export type PlanPlan_Days_AggregateArgs = {
   offset?: Maybe<Scalars['Int']>;
   order_by?: Maybe<Array<Plan_Day_Order_By>>;
   where?: Maybe<Plan_Day_Bool_Exp>;
+};
+
+
+/** columns and relationships of "plan" */
+export type PlanPlan_JourneysArgs = {
+  distinct_on?: Maybe<Array<Plan_Journey_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Plan_Journey_Order_By>>;
+  where?: Maybe<Plan_Journey_Bool_Exp>;
+};
+
+
+/** columns and relationships of "plan" */
+export type PlanPlan_Journeys_AggregateArgs = {
+  distinct_on?: Maybe<Array<Plan_Journey_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Plan_Journey_Order_By>>;
+  where?: Maybe<Plan_Journey_Bool_Exp>;
 };
 
 /** aggregated selection of "plan" */
@@ -440,6 +464,7 @@ export type Plan_Bool_Exp = {
   name?: Maybe<String_Comparison_Exp>;
   plan_days?: Maybe<Plan_Day_Bool_Exp>;
   plan_id?: Maybe<Int_Comparison_Exp>;
+  plan_journeys?: Maybe<Plan_Journey_Bool_Exp>;
 };
 
 /** unique or primary key constraints on table "plan" */
@@ -1070,6 +1095,7 @@ export type Plan_Insert_Input = {
   name?: Maybe<Scalars['String']>;
   plan_days?: Maybe<Plan_Day_Arr_Rel_Insert_Input>;
   plan_id?: Maybe<Scalars['Int']>;
+  plan_journeys?: Maybe<Plan_Journey_Arr_Rel_Insert_Input>;
 };
 
 /** columns and relationships of "plan_journey" */
@@ -1135,11 +1161,39 @@ export type Plan_Journey_Aggregate_FieldsCountArgs = {
   distinct?: Maybe<Scalars['Boolean']>;
 };
 
+/** order by aggregate values of table "plan_journey" */
+export type Plan_Journey_Aggregate_Order_By = {
+  avg?: Maybe<Plan_Journey_Avg_Order_By>;
+  count?: Maybe<Order_By>;
+  max?: Maybe<Plan_Journey_Max_Order_By>;
+  min?: Maybe<Plan_Journey_Min_Order_By>;
+  stddev?: Maybe<Plan_Journey_Stddev_Order_By>;
+  stddev_pop?: Maybe<Plan_Journey_Stddev_Pop_Order_By>;
+  stddev_samp?: Maybe<Plan_Journey_Stddev_Samp_Order_By>;
+  sum?: Maybe<Plan_Journey_Sum_Order_By>;
+  var_pop?: Maybe<Plan_Journey_Var_Pop_Order_By>;
+  var_samp?: Maybe<Plan_Journey_Var_Samp_Order_By>;
+  variance?: Maybe<Plan_Journey_Variance_Order_By>;
+};
+
+/** input type for inserting array relation for remote table "plan_journey" */
+export type Plan_Journey_Arr_Rel_Insert_Input = {
+  data: Array<Plan_Journey_Insert_Input>;
+  /** on conflict condition */
+  on_conflict?: Maybe<Plan_Journey_On_Conflict>;
+};
+
 /** aggregate avg on columns */
 export type Plan_Journey_Avg_Fields = {
   __typename?: 'plan_journey_avg_fields';
   plan_id?: Maybe<Scalars['Float']>;
   plan_journey_id?: Maybe<Scalars['Float']>;
+};
+
+/** order by avg() on columns of table "plan_journey" */
+export type Plan_Journey_Avg_Order_By = {
+  plan_id?: Maybe<Order_By>;
+  plan_journey_id?: Maybe<Order_By>;
 };
 
 /** Boolean expression to filter rows from the table "plan_journey". All fields are combined with a logical 'AND'. */
@@ -1507,11 +1561,23 @@ export type Plan_Journey_Max_Fields = {
   plan_journey_id?: Maybe<Scalars['Int']>;
 };
 
+/** order by max() on columns of table "plan_journey" */
+export type Plan_Journey_Max_Order_By = {
+  plan_id?: Maybe<Order_By>;
+  plan_journey_id?: Maybe<Order_By>;
+};
+
 /** aggregate min on columns */
 export type Plan_Journey_Min_Fields = {
   __typename?: 'plan_journey_min_fields';
   plan_id?: Maybe<Scalars['Int']>;
   plan_journey_id?: Maybe<Scalars['Int']>;
+};
+
+/** order by min() on columns of table "plan_journey" */
+export type Plan_Journey_Min_Order_By = {
+  plan_id?: Maybe<Order_By>;
+  plan_journey_id?: Maybe<Order_By>;
 };
 
 /** response of any mutation on the table "plan_journey" */
@@ -1571,11 +1637,23 @@ export type Plan_Journey_Stddev_Fields = {
   plan_journey_id?: Maybe<Scalars['Float']>;
 };
 
+/** order by stddev() on columns of table "plan_journey" */
+export type Plan_Journey_Stddev_Order_By = {
+  plan_id?: Maybe<Order_By>;
+  plan_journey_id?: Maybe<Order_By>;
+};
+
 /** aggregate stddev_pop on columns */
 export type Plan_Journey_Stddev_Pop_Fields = {
   __typename?: 'plan_journey_stddev_pop_fields';
   plan_id?: Maybe<Scalars['Float']>;
   plan_journey_id?: Maybe<Scalars['Float']>;
+};
+
+/** order by stddev_pop() on columns of table "plan_journey" */
+export type Plan_Journey_Stddev_Pop_Order_By = {
+  plan_id?: Maybe<Order_By>;
+  plan_journey_id?: Maybe<Order_By>;
 };
 
 /** aggregate stddev_samp on columns */
@@ -1585,11 +1663,23 @@ export type Plan_Journey_Stddev_Samp_Fields = {
   plan_journey_id?: Maybe<Scalars['Float']>;
 };
 
+/** order by stddev_samp() on columns of table "plan_journey" */
+export type Plan_Journey_Stddev_Samp_Order_By = {
+  plan_id?: Maybe<Order_By>;
+  plan_journey_id?: Maybe<Order_By>;
+};
+
 /** aggregate sum on columns */
 export type Plan_Journey_Sum_Fields = {
   __typename?: 'plan_journey_sum_fields';
   plan_id?: Maybe<Scalars['Int']>;
   plan_journey_id?: Maybe<Scalars['Int']>;
+};
+
+/** order by sum() on columns of table "plan_journey" */
+export type Plan_Journey_Sum_Order_By = {
+  plan_id?: Maybe<Order_By>;
+  plan_journey_id?: Maybe<Order_By>;
 };
 
 /** update columns of table "plan_journey" */
@@ -1607,6 +1697,12 @@ export type Plan_Journey_Var_Pop_Fields = {
   plan_journey_id?: Maybe<Scalars['Float']>;
 };
 
+/** order by var_pop() on columns of table "plan_journey" */
+export type Plan_Journey_Var_Pop_Order_By = {
+  plan_id?: Maybe<Order_By>;
+  plan_journey_id?: Maybe<Order_By>;
+};
+
 /** aggregate var_samp on columns */
 export type Plan_Journey_Var_Samp_Fields = {
   __typename?: 'plan_journey_var_samp_fields';
@@ -1614,11 +1710,23 @@ export type Plan_Journey_Var_Samp_Fields = {
   plan_journey_id?: Maybe<Scalars['Float']>;
 };
 
+/** order by var_samp() on columns of table "plan_journey" */
+export type Plan_Journey_Var_Samp_Order_By = {
+  plan_id?: Maybe<Order_By>;
+  plan_journey_id?: Maybe<Order_By>;
+};
+
 /** aggregate variance on columns */
 export type Plan_Journey_Variance_Fields = {
   __typename?: 'plan_journey_variance_fields';
   plan_id?: Maybe<Scalars['Float']>;
   plan_journey_id?: Maybe<Scalars['Float']>;
+};
+
+/** order by variance() on columns of table "plan_journey" */
+export type Plan_Journey_Variance_Order_By = {
+  plan_id?: Maybe<Order_By>;
+  plan_journey_id?: Maybe<Order_By>;
 };
 
 /** aggregate max on columns */
@@ -1663,6 +1771,7 @@ export type Plan_Order_By = {
   name?: Maybe<Order_By>;
   plan_days_aggregate?: Maybe<Plan_Day_Aggregate_Order_By>;
   plan_id?: Maybe<Order_By>;
+  plan_journeys_aggregate?: Maybe<Plan_Journey_Aggregate_Order_By>;
 };
 
 /** primary key columns input for table: plan */
@@ -2045,6 +2154,13 @@ export type Timestamptz_Comparison_Exp = {
   _nin?: Maybe<Array<Scalars['timestamptz']>>;
 };
 
+export type BeginJourneyMutationVariables = Exact<{
+  plan_id: Scalars['Int'];
+}>;
+
+
+export type BeginJourneyMutation = { __typename?: 'mutation_root', insert_plan_journey_one?: { __typename?: 'plan_journey', plan_journey_id: number, plan: { __typename?: 'plan', plan_days: Array<{ __typename?: 'plan_day', plan_day_id: number }> } } | null | undefined };
+
 export type CompleteDayMutationVariables = Exact<{
   plan_journey_day_id: Scalars['Int'];
   completed_date: Scalars['timestamptz'];
@@ -2060,6 +2176,11 @@ export type LoadJourneyQueryVariables = Exact<{
 
 export type LoadJourneyQuery = { __typename?: 'query_root', plan_journey?: { __typename?: 'plan_journey', plan_id: number, plan: { __typename?: 'plan', name: string }, plan_journey_days: Array<{ __typename?: 'plan_journey_day', plan_journey_day_id: number, completed: boolean, completed_date?: string | null | undefined, plan_day: { __typename?: 'plan_day', plan_day_id: number, day: number, plan_day_passages: Array<{ __typename?: 'plan_day_passage', passage: string }> } }> } | null | undefined };
 
+export type LoadPlansQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type LoadPlansQuery = { __typename?: 'query_root', plan: Array<{ __typename?: 'plan', plan_id: number, name: string, plan_days_aggregate: { __typename?: 'plan_day_aggregate', aggregate?: { __typename?: 'plan_day_aggregate_fields', count: number } | null | undefined }, plan_journeys_aggregate: { __typename?: 'plan_journey_aggregate', aggregate?: { __typename?: 'plan_journey_aggregate_fields', count: number } | null | undefined } }> };
+
 export type UncompleteDayMutationVariables = Exact<{
   plan_journey_day_id: Scalars['Int'];
 }>;
@@ -2068,6 +2189,22 @@ export type UncompleteDayMutationVariables = Exact<{
 export type UncompleteDayMutation = { __typename?: 'mutation_root', plan_journey_day?: { __typename?: 'plan_journey_day', plan_journey_day_id: number, completed: boolean, completed_date?: string | null | undefined } | null | undefined };
 
 
+export const BeginJourneyDocument = gql`
+    mutation BeginJourney($plan_id: Int!) {
+  insert_plan_journey_one(object: {plan_id: $plan_id}) {
+    plan_journey_id
+    plan {
+      plan_days {
+        plan_day_id
+      }
+    }
+  }
+}
+    `;
+
+export function useBeginJourneyMutation() {
+  return Urql.useMutation<BeginJourneyMutation, BeginJourneyMutationVariables>(BeginJourneyDocument);
+};
 export const CompleteDayDocument = gql`
     mutation CompleteDay($plan_journey_day_id: Int!, $completed_date: timestamptz!) {
   plan_journey_day: update_plan_journey_day_by_pk(
@@ -2109,6 +2246,28 @@ export const LoadJourneyDocument = gql`
 
 export function useLoadJourneyQuery(options: Omit<Urql.UseQueryArgs<LoadJourneyQueryVariables>, 'query'> = {}) {
   return Urql.useQuery<LoadJourneyQuery>({ query: LoadJourneyDocument, ...options });
+};
+export const LoadPlansDocument = gql`
+    query LoadPlans {
+  plan {
+    plan_id
+    name
+    plan_days_aggregate {
+      aggregate {
+        count
+      }
+    }
+    plan_journeys_aggregate {
+      aggregate {
+        count
+      }
+    }
+  }
+}
+    `;
+
+export function useLoadPlansQuery(options: Omit<Urql.UseQueryArgs<LoadPlansQueryVariables>, 'query'> = {}) {
+  return Urql.useQuery<LoadPlansQuery>({ query: LoadPlansDocument, ...options });
 };
 export const UncompleteDayDocument = gql`
     mutation UncompleteDay($plan_journey_day_id: Int!) {

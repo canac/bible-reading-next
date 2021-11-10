@@ -1,0 +1,10 @@
+mutation BeginJourney($plan_id: Int!) {
+  insert_plan_journey_one(object: { plan_id: $plan_id }) {
+    plan_journey_id
+    plan {
+      plan_days {
+        plan_day_id
+      }
+    }
+  }
+}
