@@ -2176,6 +2176,11 @@ export type LoadJourneyQueryVariables = Exact<{
 
 export type LoadJourneyQuery = { __typename?: 'query_root', plan_journey?: { __typename?: 'plan_journey', plan_id: number, plan: { __typename?: 'plan', name: string }, plan_journey_days: Array<{ __typename?: 'plan_journey_day', plan_journey_day_id: number, completed: boolean, completed_date?: string | null | undefined, plan_day: { __typename?: 'plan_day', plan_day_id: number, day: number, plan_day_passages: Array<{ __typename?: 'plan_day_passage', passage: string }> } }> } | null | undefined };
 
+export type LoadJourneysQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type LoadJourneysQuery = { __typename?: 'query_root', plan_journey: Array<{ __typename?: 'plan_journey', plan_journey_id: number, plan: { __typename?: 'plan', name: string, plan_days_aggregate: { __typename?: 'plan_day_aggregate', aggregate?: { __typename?: 'plan_day_aggregate_fields', count: number } | null | undefined } }, plan_journey_days_aggregate: { __typename?: 'plan_journey_day_aggregate', aggregate?: { __typename?: 'plan_journey_day_aggregate_fields', count: number, min?: { __typename?: 'plan_journey_day_min_fields', completed_date?: string | null | undefined } | null | undefined } | null | undefined } }> };
+
 export type LoadPlansQueryVariables = Exact<{ [key: string]: never; }>;
 
 
@@ -2246,6 +2251,33 @@ export const LoadJourneyDocument = gql`
 
 export function useLoadJourneyQuery(options: Omit<Urql.UseQueryArgs<LoadJourneyQueryVariables>, 'query'> = {}) {
   return Urql.useQuery<LoadJourneyQuery>({ query: LoadJourneyDocument, ...options });
+};
+export const LoadJourneysDocument = gql`
+    query LoadJourneys {
+  plan_journey {
+    plan_journey_id
+    plan {
+      name
+      plan_days_aggregate {
+        aggregate {
+          count
+        }
+      }
+    }
+    plan_journey_days_aggregate(where: {completed: {_eq: true}}) {
+      aggregate {
+        count
+        min {
+          completed_date
+        }
+      }
+    }
+  }
+}
+    `;
+
+export function useLoadJourneysQuery(options: Omit<Urql.UseQueryArgs<LoadJourneysQueryVariables>, 'query'> = {}) {
+  return Urql.useQuery<LoadJourneysQuery>({ query: LoadJourneysDocument, ...options });
 };
 export const LoadPlansDocument = gql`
     query LoadPlans {

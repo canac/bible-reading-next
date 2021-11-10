@@ -1,0 +1,21 @@
+query LoadJourneys {
+  plan_journey {
+    plan_journey_id
+    plan {
+      name
+      plan_days_aggregate {
+        aggregate {
+          count
+        }
+      }
+    }
+    plan_journey_days_aggregate(where: { completed: { _eq: true } }) {
+      aggregate {
+        count
+        min {
+          completed_date
+        }
+      }
+    }
+  }
+}
